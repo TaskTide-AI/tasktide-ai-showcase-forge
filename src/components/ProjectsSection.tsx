@@ -7,7 +7,7 @@ const projects = [
   {
     id: 'project1',
     title: 'ERP System Automation',
-    description: 'Implemented AI-powered automation for a manufacturing company's ERP system, reducing manual data entry by 85% and improving accuracy.',
+    description: 'Implemented AI-powered automation for a manufacturing company\'s ERP system, reducing manual data entry by 85% and improving accuracy.',
     videoPlaceholder: 'Project 1 Video Showcase',
     category: 'enterprise'
   },
