@@ -48,17 +48,19 @@ const projects = [
   }
 ];
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
   return (
-    <Card className="card-hover overflow-hidden" id={project.id}>
-      <div className="aspect-video bg-tasktide-blue/10 flex items-center justify-center">
-        <div className="text-tasktide-blue font-medium">{project.videoPlaceholder}</div>
+    <Card className="card-hover overflow-hidden animate-card glass-card" 
+          id={project.id} 
+          style={{ animationDelay: `${index * 0.1}s` }}>
+      <div className="aspect-video bg-tasktide-teal/20 flex items-center justify-center">
+        <div className="text-tasktide-teal font-medium">{project.videoPlaceholder}</div>
       </div>
       <CardContent className="p-6">
-        <h3 className="text-xl font-semibold mb-2 text-tasktide-blue">{project.title}</h3>
-        <p className="text-gray-600">{project.description}</p>
+        <h3 className="text-xl font-semibold mb-2 text-tasktide-teal">{project.title}</h3>
+        <p className="text-gray-300">{project.description}</p>
         <div className="mt-4">
-          <button className="text-tasktide-teal hover:text-tasktide-orange font-medium">
+          <button className="text-tasktide-teal hover:text-tasktide-orange transition-colors font-medium">
             View Case Study →
           </button>
         </div>
@@ -75,49 +77,49 @@ const ProjectsSection = () => {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="bg-gray-50">
-      <div className="section-container">
-        <h2 className="section-title text-center">Our Projects</h2>
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
+    <section id="projects" className="bg-dark-400 py-16">
+      <div className="section-container animate-on-scroll">
+        <h2 className="section-title text-center animate-text text-tasktide-teal">Our Projects</h2>
+        <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12 animate-text" style={{ animationDelay: '0.2s' }}>
           Explore our portfolio of successful automation projects that have transformed businesses across industries.
         </p>
         
-        <Tabs defaultValue="all" className="w-full max-w-4xl mx-auto mb-12">
-          <TabsList className="grid grid-cols-4 mb-8">
-            <TabsTrigger value="all" onClick={() => setActiveCategory("all")}>All</TabsTrigger>
-            <TabsTrigger value="enterprise" onClick={() => setActiveCategory("enterprise")}>Enterprise</TabsTrigger>
-            <TabsTrigger value="ai" onClick={() => setActiveCategory("ai")}>AI Solutions</TabsTrigger>
-            <TabsTrigger value="workflow" onClick={() => setActiveCategory("workflow")}>Workflow</TabsTrigger>
+        <Tabs defaultValue="all" className="w-full max-w-4xl mx-auto mb-12 animate-on-scroll" style={{ animationDelay: '0.3s' }}>
+          <TabsList className="grid grid-cols-4 mb-8 bg-dark-300">
+            <TabsTrigger value="all" onClick={() => setActiveCategory("all")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">All</TabsTrigger>
+            <TabsTrigger value="enterprise" onClick={() => setActiveCategory("enterprise")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">Enterprise</TabsTrigger>
+            <TabsTrigger value="ai" onClick={() => setActiveCategory("ai")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">AI Solutions</TabsTrigger>
+            <TabsTrigger value="workflow" onClick={() => setActiveCategory("workflow")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">Workflow</TabsTrigger>
           </TabsList>
           
           <TabsContent value="all" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
           
           <TabsContent value="enterprise" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
           
           <TabsContent value="ai" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
           
           <TabsContent value="workflow" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
           </TabsContent>
