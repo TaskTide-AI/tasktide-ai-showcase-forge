@@ -72,9 +72,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const filteredProjects = activeCategory === "all" 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
+  // Filter projects based on the active category
+  const getFilteredProjects = (category: string) => {
+    return category === "all" 
+      ? projects 
+      : projects.filter(project => project.category === category);
+  };
 
   return (
     <section id="projects" className="bg-dark-400 py-16">
@@ -86,15 +89,39 @@ const ProjectsSection = () => {
         
         <Tabs defaultValue="all" className="w-full max-w-4xl mx-auto mb-12 animate-on-scroll" style={{ animationDelay: '0.3s' }}>
           <TabsList className="grid grid-cols-4 mb-8 bg-dark-300">
-            <TabsTrigger value="all" onClick={() => setActiveCategory("all")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">All</TabsTrigger>
-            <TabsTrigger value="enterprise" onClick={() => setActiveCategory("enterprise")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">Enterprise</TabsTrigger>
-            <TabsTrigger value="ai" onClick={() => setActiveCategory("ai")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">AI Solutions</TabsTrigger>
-            <TabsTrigger value="workflow" onClick={() => setActiveCategory("workflow")} className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white">Workflow</TabsTrigger>
+            <TabsTrigger 
+              value="all" 
+              onClick={() => setActiveCategory("all")} 
+              className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white"
+            >
+              All
+            </TabsTrigger>
+            <TabsTrigger 
+              value="enterprise" 
+              onClick={() => setActiveCategory("enterprise")} 
+              className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white"
+            >
+              Enterprise
+            </TabsTrigger>
+            <TabsTrigger 
+              value="ai" 
+              onClick={() => setActiveCategory("ai")} 
+              className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white"
+            >
+              AI Solutions
+            </TabsTrigger>
+            <TabsTrigger 
+              value="workflow" 
+              onClick={() => setActiveCategory("workflow")} 
+              className="data-[state=active]:bg-tasktide-blue data-[state=active]:text-white"
+            >
+              Workflow
+            </TabsTrigger>
           </TabsList>
           
           <TabsContent value="all" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
+              {getFilteredProjects("all").map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
@@ -102,7 +129,7 @@ const ProjectsSection = () => {
           
           <TabsContent value="enterprise" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
+              {getFilteredProjects("enterprise").map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
@@ -110,7 +137,7 @@ const ProjectsSection = () => {
           
           <TabsContent value="ai" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
+              {getFilteredProjects("ai").map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
@@ -118,7 +145,7 @@ const ProjectsSection = () => {
           
           <TabsContent value="workflow" className="mt-0">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
+              {getFilteredProjects("workflow").map((project, index) => (
                 <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </div>
