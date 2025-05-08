@@ -2,10 +2,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-dark-500">
+    <div className="min-h-screen flex flex-col bg-[#0d1321]">
       <Navbar />
       <main className="flex-grow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -14,42 +15,42 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project Cards */}
             <div className="glass-card p-6 rounded-xl shadow-lg animate-card">
-              <h2 className="text-2xl font-semibold text-white mb-4">Project 1</h2>
-              <p className="text-gray-300 mb-4">An innovative solution that transforms business workflows and enhances productivity.</p>
-              <div className="aspect-video bg-dark-400 rounded-md mb-4 flex items-center justify-center">
+              <h2 className="text-2xl font-semibold text-blue-400 mb-4">LLM Workflows</h2>
+              <p className="text-gray-300 mb-4">Advanced language model pipelines and automation solutions that transform business workflows and enhance productivity.</p>
+              <div className="aspect-video bg-[#111a2d] rounded-md mb-4 flex items-center justify-center">
                 <div className="text-gray-400 flex flex-col items-center">
                   <span className="mb-2">Video Placeholder</span>
                 </div>
               </div>
-              <a href="/projects/project1" className="text-tasktide-teal hover:text-tasktide-blue transition-colors">
+              <Link to="/projects/llm-workflows" className="text-blue-400 hover:text-blue-300 transition-colors">
                 Learn more →
-              </a>
+              </Link>
             </div>
             
             <div className="glass-card p-6 rounded-xl shadow-lg animate-card" style={{animationDelay: '0.1s'}}>
-              <h2 className="text-2xl font-semibold text-white mb-4">Project 2</h2>
-              <p className="text-gray-300 mb-4">A data-driven platform that provides actionable insights for strategic decision making.</p>
-              <div className="aspect-video bg-dark-400 rounded-md mb-4 flex items-center justify-center">
+              <h2 className="text-2xl font-semibold text-blue-400 mb-4">AI Agents</h2>
+              <p className="text-gray-300 mb-4">Autonomous AI agents for task automation and decision making that provide actionable insights for strategic decisions.</p>
+              <div className="aspect-video bg-[#111a2d] rounded-md mb-4 flex items-center justify-center">
                 <div className="text-gray-400 flex flex-col items-center">
                   <span className="mb-2">Video Placeholder</span>
                 </div>
               </div>
-              <a href="/projects/project2" className="text-tasktide-teal hover:text-tasktide-blue transition-colors">
+              <Link to="/projects/ai-agents" className="text-blue-400 hover:text-blue-300 transition-colors">
                 Learn more →
-              </a>
+              </Link>
             </div>
             
             <div className="glass-card p-6 rounded-xl shadow-lg animate-card" style={{animationDelay: '0.2s'}}>
-              <h2 className="text-2xl font-semibold text-white mb-4">Project 3</h2>
-              <p className="text-gray-300 mb-4">An automation solution that reduces manual tasks and improves operational efficiency.</p>
-              <div className="aspect-video bg-dark-400 rounded-md mb-4 flex items-center justify-center">
+              <h2 className="text-2xl font-semibold text-blue-400 mb-4">Data Processing</h2>
+              <p className="text-gray-300 mb-4">Efficient data processing and transformation pipelines that reduce manual tasks and improve operational efficiency.</p>
+              <div className="aspect-video bg-[#111a2d] rounded-md mb-4 flex items-center justify-center">
                 <div className="text-gray-400 flex flex-col items-center">
                   <span className="mb-2">Video Placeholder</span>
                 </div>
               </div>
-              <a href="/projects/project3" className="text-tasktide-teal hover:text-tasktide-blue transition-colors">
+              <Link to="/projects/data-processing" className="text-blue-400 hover:text-blue-300 transition-colors">
                 Learn more →
-              </a>
+              </Link>
             </div>
           </div>
         </div>
