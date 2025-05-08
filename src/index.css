@@ -121,8 +121,22 @@
     @apply animate-fade-in-up;
   }
 
+  /* New styles for 3D and glassmorphism effects */
   .glass-card {
     @apply bg-dark-300/50 backdrop-blur-sm border border-white/10;
   }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
+  }
+  
+  .button-3d {
+    @apply transform transition-all duration-200 active:translate-y-1 hover:shadow-lg;
+  }
+  
+  .top-ribbon-button-hover {
+    @apply relative overflow-hidden transition-all duration-300 
+           before:absolute before:inset-0 before:bg-gradient-to-r before:from-tasktide-teal/20 before:to-tasktide-blue/20 
+           before:opacity-0 before:transition-opacity hover:before:opacity-100;
+  }
 }
-
