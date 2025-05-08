@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import {
@@ -6,7 +7,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, User, Briefcase } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,54 +23,63 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
-              <span className="text-tasktide-teal text-xl font-bold bg-gradient-to-r from-tasktide-teal to-tasktide-blue bg-clip-text text-transparent">TaskTide AI</span>
+              <Link to="/" className="text-tasktide-teal text-xl font-bold bg-gradient-to-r from-tasktide-teal to-tasktide-blue bg-clip-text text-transparent">
+                TaskTide AI
+              </Link>
             </div>
             <div className="hidden md:ml-10 md:flex md:space-x-8">
-              <a href="#" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md top-ribbon-button-hover">
+              <Link to="/" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md top-ribbon-button-hover">
                 Home
-              </a>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
-                    Projects <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="bg-dark-200 border-white/10 backdrop-blur-lg">
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#projects" className="w-full">All Projects</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#project1" className="w-full">Project 1</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#project2" className="w-full">Project 2</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#project3" className="w-full">Project 3</a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
-                    Team <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="bg-dark-200 border-white/10 backdrop-blur-lg">
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#people" className="w-full">Our Team</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#leadership" className="w-full">Leadership</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="hover:bg-white/10 focus:bg-white/10 text-white">
-                    <a href="#developers" className="w-full">Developers</a>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <a href="#contact" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md top-ribbon-button-hover">
+              </Link>
+              
+              {/* Projects Dropdown - Modified to show on hover */}
+              <div className="relative group">
+                <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
+                  <Briefcase className="h-4 w-4" />
+                  Projects <ChevronDown className="h-4 w-4" />
+                </Button>
+                <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-dark-200 border-white/10 backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="py-1">
+                    <Link to="/projects" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      All Projects
+                    </Link>
+                    <Link to="/projects/project1" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      Project 1
+                    </Link>
+                    <Link to="/projects/project2" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      Project 2
+                    </Link>
+                    <Link to="/projects/project3" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      Project 3
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Solo Innovator instead of Team */}
+              <div className="relative group">
+                <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
+                  <User className="h-4 w-4" />
+                  Solo Innovator <ChevronDown className="h-4 w-4" />
+                </Button>
+                <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-dark-200 border-white/10 backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="py-1">
+                    <Link to="/solo" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      About Me
+                    </Link>
+                    <Link to="/solo/expertise" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      Expertise
+                    </Link>
+                    <Link to="/solo/approach" className="block px-4 py-2 text-sm text-white hover:bg-white/10">
+                      My Approach
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              <Link to="/contact" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md top-ribbon-button-hover">
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center">
@@ -96,47 +107,49 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-200 shadow-lg">
-          <a href="#" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
+          <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
             Home
-          </a>
+          </Link>
           <div className="relative">
-            <button className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
+            <button className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal flex items-center">
+              <Briefcase className="h-4 w-4 mr-2" />
               Projects
             </button>
             <div className="pl-6 space-y-1">
-              <a href="#projects" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
+              <Link to="/projects" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
                 All Projects
-              </a>
-              <a href="#project1" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
+              </Link>
+              <Link to="/projects/project1" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
                 Project 1
-              </a>
-              <a href="#project2" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
+              </Link>
+              <Link to="/projects/project2" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
                 Project 2
-              </a>
-              <a href="#project3" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
+              </Link>
+              <Link to="/projects/project3" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
                 Project 3
-              </a>
+              </Link>
             </div>
           </div>
           <div className="relative">
-            <button className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
-              Team
+            <button className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal flex items-center">
+              <User className="h-4 w-4 mr-2" />
+              Solo Innovator
             </button>
             <div className="pl-6 space-y-1">
-              <a href="#people" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
-                Our Team
-              </a>
-              <a href="#leadership" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
-                Leadership
-              </a>
-              <a href="#developers" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-tasktide-teal">
-                Developers
-              </a>
+              <Link to="/solo" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
+                About Me
+              </Link>
+              <Link to="/solo/expertise" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
+                Expertise
+              </Link>
+              <Link to="/solo/approach" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal">
+                My Approach
+              </Link>
             </div>
           </div>
-          <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
+          <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal">
             Contact
-          </a>
+          </Link>
           <div className="pt-2">
             <Button className="w-full bg-gradient-to-r from-tasktide-orange to-tasktide-teal hover:bg-tasktide-teal text-white button-3d transition-all duration-300">
               Get Started
