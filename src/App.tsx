@@ -17,7 +17,7 @@ const initScrollAnimations = () => {
   const isInViewport = (element: Element) => {
     const rect = element.getBoundingClientRect();
     return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9
     );
   };
 
@@ -26,13 +26,14 @@ const initScrollAnimations = () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-text, .animate-card');
     
     animatedElements.forEach((element) => {
-      if (isInViewport(element) && !element.classList.contains('animated')) {
+      if (isInViewport(element)) {
         element.classList.add('animated');
       }
     });
   };
 
-  // Initial check for elements already in viewport
+  // Initial check for elements already in viewport - run immediately and then again after a slight delay
+  handleScrollAnimation();
   setTimeout(handleScrollAnimation, 100);
   
   // Add scroll event listener

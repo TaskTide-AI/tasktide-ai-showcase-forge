@@ -98,27 +98,36 @@
   }
 
   .animate-on-scroll {
-    @apply opacity-0;
+    @apply opacity-0 transition-all duration-500;
   }
   
   .animate-on-scroll.animated {
-    @apply animate-fade-in-up;
+    @apply opacity-100 animate-fade-in-up;
   }
   
   .animate-text {
-    @apply opacity-0;
+    @apply opacity-0 transition-all duration-500;
   }
   
   .animate-text.animated {
-    @apply animate-fade-in;
+    @apply opacity-100 animate-fade-in;
   }
   
   .animate-card {
-    @apply opacity-0;
+    @apply opacity-0 transition-all duration-500;
   }
   
   .animate-card.animated {
-    @apply animate-fade-in-up;
+    @apply opacity-100 animate-fade-in-up;
+  }
+
+  /* Force initial visibility on mobile devices */
+  @media (max-width: 768px) {
+    .animate-on-scroll,
+    .animate-text,
+    .animate-card {
+      @apply opacity-100;
+    }
   }
 
   /* New styles for 3D and glassmorphism effects */
