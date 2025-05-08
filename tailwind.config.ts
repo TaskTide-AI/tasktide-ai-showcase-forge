@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,18 +63,19 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				tasktide: {
-					blue: '#0B3954',
-					teal: '#087E8B',
-					orange: '#FF5A5F',
+					blue: '#3a5a7d',    // Softer blue tone (was #0B3954)
+					teal: '#41b0a6',    // Softer teal color (was #087E8B)
+					orange: '#e76f51',  // More muted orange (was #FF5A5F)
+					purple: '#9678d3',  // New accent color
 					light: '#F5F5F5',
 					dark: '#1A1A1A'
 				},
 				dark: {
 					100: '#333333',
 					200: '#2B2B2B',
-					300: '#232323',
-					400: '#1E1E1E',
-					500: '#121212'
+					300: '#1f2937',    // Improved dark background with slight blue tone
+					400: '#111827',    // Improved dark background 
+					500: '#0f172a'     // Improved dark background with slight blue tone
 				}
 			},
 			borderRadius: {

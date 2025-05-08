@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -13,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AboutMission from "./pages/AboutMission";
 import AboutTechnology from "./pages/AboutTechnology";
+import Search from "./pages/Search";
 
 // Initialize scroll animations
 const initScrollAnimations = () => {
@@ -73,6 +73,7 @@ const App = () => {
             <Route path="/about/mission" element={<AboutMission />} />
             <Route path="/about/technology" element={<AboutTechnology />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/search" element={<Search />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
