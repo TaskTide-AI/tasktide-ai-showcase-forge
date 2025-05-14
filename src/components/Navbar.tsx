@@ -4,6 +4,7 @@ import { Menu, X, ChevronDown, Search } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Input } from "@/components/ui/input";
+import './NavbarFix.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,10 +37,8 @@ const Navbar = () => {
       setSearchOpen(false);
       setSearchQuery('');
     }
-  };
-  
-  return (
-    <nav className={`fixed top-0 w-full z-30 transition-all duration-300 ${scrolled ? 'bg-dark-500/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+  };  return (
+    <nav className={`sticky top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-dark-500/90 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -57,24 +56,22 @@ const Navbar = () => {
               <div className="relative group">
                 <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
                   Our Projects <ChevronDown className="h-4 w-4" />
-                </Button>
-                <div className="absolute left-0 mt-2 w-80 rounded-xl shadow-lg glass-card border border-white/10 backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                </Button>                <div className="absolute left-0 mt-2 w-80 rounded-xl dropdown-menu opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <div className="py-3">
-                    <Link to="/projects" className="block px-4 py-3 text-sm hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                    <Link to="/projects" className="block px-4 py-3 text-sm hover:bg-dark-300 transition-colors rounded-md mx-1">
                       <div className="text-tasktide-teal font-medium">All Projects</div>
-                      <div className="text-gray-300 text-xs mt-1">Browse our complete portfolio of AI automation solutions.</div>
-                    </Link>
-                    <Link to="/projects/llm-workflows" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                      <div className="text-white text-xs mt-1">Browse our complete portfolio of AI automation solutions.</div>
+                    </Link>                    <Link to="/projects/llm-workflows" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300 transition-colors rounded-md mx-1">
                       <div className="text-tasktide-purple font-medium">LLM Workflows</div>
-                      <div className="text-gray-300 text-xs mt-1">Advanced language model implementations for business processes.</div>
+                      <div className="text-white text-xs mt-1">Advanced language model implementations for business processes.</div>
                     </Link>
-                    <Link to="/projects/ai-agents" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                    <Link to="/projects/ai-agents" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300 transition-colors rounded-md mx-1">
                       <div className="text-tasktide-teal font-medium">AI Agents</div>
-                      <div className="text-gray-300 text-xs mt-1">Autonomous AI agents for task automation and decision making.</div>
+                      <div className="text-white text-xs mt-1">Autonomous AI agents for task automation and decision making.</div>
                     </Link>
-                    <Link to="/projects/data-processing" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                    <Link to="/projects/data-processing" className="block px-4 py-3 text-sm border-t border-gray-700/30 hover:bg-dark-300 transition-colors rounded-md mx-1">
                       <div className="text-tasktide-orange font-medium">Data Processing</div>
-                      <div className="text-gray-300 text-xs mt-1">Efficient data processing and transformation pipelines.</div>
+                      <div className="text-white text-xs mt-1">Efficient data processing and transformation pipelines.</div>
                     </Link>
                   </div>
                 </div>
@@ -84,16 +81,14 @@ const Navbar = () => {
               <div className="relative group">
                 <Button variant="ghost" className="font-medium text-white hover:text-tasktide-teal px-3 py-2 rounded-md flex items-center gap-1 top-ribbon-button-hover">
                   About Us <ChevronDown className="h-4 w-4" />
-                </Button>
-                <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg glass-card border border-white/10 backdrop-blur-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                  <div className="py-1">
-                    <Link to="/about" className="block px-4 py-2 text-sm text-white hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                </Button>                <div className="absolute left-0 mt-2 w-48 rounded-xl dropdown-menu opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <div className="py-1">                    <Link to="/about" className="block px-4 py-2 text-sm text-white hover:bg-dark-300 hover:text-tasktide-teal transition-colors rounded-md mx-1">
                       Company Overview
                     </Link>
-                    <Link to="/about/mission" className="block px-4 py-2 text-sm text-white hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                    <Link to="/about/mission" className="block px-4 py-2 text-sm text-white hover:bg-dark-300 hover:text-tasktide-teal transition-colors rounded-md mx-1">
                       Our Mission
                     </Link>
-                    <Link to="/about/technology" className="block px-4 py-2 text-sm text-white hover:bg-dark-300/50 transition-colors rounded-md mx-1">
+                    <Link to="/about/technology" className="block px-4 py-2 text-sm text-white hover:bg-dark-300 hover:text-tasktide-teal transition-colors rounded-md mx-1">
                       Our Technology
                     </Link>
                   </div>
@@ -124,10 +119,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      
-      {/* Mobile menu */}
+        {/* Mobile menu */}
       <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 glass-card">
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-dark-400 border-b border-white/10">
           <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-tasktide-teal hover:bg-dark-300/50 transition-colors">
             Home
           </Link>
@@ -139,14 +133,13 @@ const Navbar = () => {
             <div className="pl-6 space-y-1">
               <Link to="/projects" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal hover:bg-dark-300/50 transition-colors">
                 All Projects
-              </Link>
-              <Link to="/projects/llm-workflows" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-purple hover:bg-dark-300/50 transition-colors">
+              </Link>              <Link to="/projects/llm-workflows" className="block px-3 py-2 rounded-md text-sm text-gray-200 hover:text-tasktide-purple hover:bg-dark-300 transition-colors">
                 LLM Workflows
               </Link>
-              <Link to="/projects/ai-agents" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-teal hover:bg-dark-300/50 transition-colors">
+              <Link to="/projects/ai-agents" className="block px-3 py-2 rounded-md text-sm text-gray-200 hover:text-tasktide-teal hover:bg-dark-300 transition-colors">
                 AI Agents
               </Link>
-              <Link to="/projects/data-processing" className="block px-3 py-2 rounded-md text-sm text-gray-400 hover:text-tasktide-orange hover:bg-dark-300/50 transition-colors">
+              <Link to="/projects/data-processing" className="block px-3 py-2 rounded-md text-sm text-gray-200 hover:text-tasktide-orange hover:bg-dark-300 transition-colors">
                 Data Processing
               </Link>
             </div>

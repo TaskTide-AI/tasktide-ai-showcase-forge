@@ -3,12 +3,14 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { User } from 'lucide-react';
+import useInstantAnimation from '../hooks/use-instant-animation';
 
 const Solo = () => {
-  return (
-    <div className="min-h-screen flex flex-col bg-dark-500">
+  // Apply animations immediately without waiting for scroll
+  useInstantAnimation();  return (
+    <div className="min-h-screen flex flex-col animate-bg-container">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow animate-bg-content">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-1/2">

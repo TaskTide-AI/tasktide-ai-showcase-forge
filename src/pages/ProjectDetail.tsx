@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import useInstantAnimation from '../hooks/use-instant-animation';
 
 // Project data - in a real app, this would come from an API or database
 const projectData = {
@@ -45,6 +46,9 @@ const ProjectDetail = () => {
   const { projectId } = useParams();
   const project = projectData[projectId as keyof typeof projectData];
   
+  // Apply animations immediately without waiting for scroll
+  useInstantAnimation();
+  
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col bg-dark-500">
@@ -62,11 +66,10 @@ const ProjectDetail = () => {
       </div>
     );
   }
-
   return (
-    <div className="min-h-screen flex flex-col bg-dark-500">
+    <div className="min-h-screen flex flex-col animate-bg-container">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow animate-bg-content">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl font-bold text-gradient mb-8 animate-on-scroll">{project.title}</h1>
           

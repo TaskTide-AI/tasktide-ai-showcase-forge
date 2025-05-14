@@ -1,0 +1,179 @@
+/* Styles for animated background integration */
+
+/* Make sure the animation container is properly positioned */
+#animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Change from -1 to 0 to appear above background colors but below content */
+  overflow: hidden;
+  pointer-events: none; /* Let clicks pass through to elements below */
+}
+
+#techCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(6, 6, 18, 0.92); /* Darker background for better contrast with particles */
+  background-image: linear-gradient(to bottom, rgba(8, 8, 24, 0.95), rgba(10, 10, 30, 0.85));
+}
+
+/* Override specific site elements to work with background */
+body {
+  background-color: transparent !important;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make all page backgrounds transparent to show the animated background */
+.min-h-screen, 
+div[class*="bg-[#"], 
+div[class*="bg-dark"], 
+div[class*="bg-gradient"] {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Create helper classes for animated background integration */
+.animate-bg-container {
+  position: relative;
+  z-index: 1;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.animate-bg-content {
+  position: relative;
+  z-index: 2;
+}
+
+.animate-bg-panel {
+  background-color: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Convert solid backgrounds to semi-transparent, except for specific sections */
+.bg-dark-500, 
+.bg-\[#0d1321\] {
+  background-color: rgba(10, 10, 30, 0.5) !important;
+  backdrop-filter: blur(1px);
+}
+
+/* Fix for gradient backgrounds */
+[class*="bg-gradient-to-r"] {
+  background-color: rgba(10, 10, 30, 0.5) !important;
+  backdrop-filter: blur(1px);
+}
+
+/* Make projects section semi-transparent to show background */
+section#projects.bg-dark-400 {
+  background-color: rgba(17, 24, 39, 0.7) !important; /* Semi-transparent version of #111827 */
+  backdrop-filter: blur(1px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Make other bg-dark-400 elements semi-transparent */
+.bg-dark-400:not(section#projects) {
+  background-color: rgba(10, 10, 30, 0.5) !important;
+  backdrop-filter: blur(1px);
+}
+
+/* Make cards semi-transparent but still readable */
+.glass-card {
+  background-color: rgba(30, 30, 60, 0.65) !important;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative;
+  z-index: 2; /* Ensure cards appear above the animated background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+/* Ensure dropdowns remain visible with proper contrast */
+.dropdown-menu {
+  background-color: rgba(20, 20, 40, 0.95) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Handle specific components */
+.section-container,
+main.flex-grow,
+main > div,
+.glass-card {
+  position: relative;
+  z-index: 1;
+}
+
+/* Additional fixes to keep navbar properly positioned */
+nav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  width: 100% !important;
+}
+
+/* Fix z-index for all content sections */
+section, 
+.max-w-7xl,
+.container,
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+/* Override UI components to ensure dark theme */
+.bg-background,
+.bg-card, 
+.bg-popover, 
+.bg-accent,
+.bg-muted,
+.bg-white,
+[class*="bg-white"],
+div[style*="background-color: white"],
+div[style*="background-color:#fff"],
+div[style*="background-color: #fff"] {
+  background-color: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(3px);
+  background-image: none !important;
+}
+
+/* Target form inputs and other interactive elements */
+.input,
+input,
+textarea,
+select,
+.select-content,
+.form-elements,
+button[class*="bg-white"],
+div[role="dialog"],
+div[role="menu"],
+div[role="combobox"],
+div[role="listbox"] {
+  background-color: rgba(20, 20, 40, 0.7) !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Handle UI frameworks and third-party components */
+[class*="MuiPaper"],
+[class*="ant-"],
+[class*="chakra-"],
+[class*="modal"],
+[class*="dialog"],
+[class*="popover"],
+[class*="dropdown"],
+[class*="tooltip"],
+[class*="menu"],
+[class*="panel"] {
+  background-color: rgba(20, 20, 40, 0.8) !important;
+  color: white !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(5px);
+}

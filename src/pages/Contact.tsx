@@ -4,9 +4,13 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import useInstantAnimation from '../hooks/use-instant-animation';
 
 const Contact = () => {
   const { toast } = useToast();
+  
+  // Apply animations immediately without waiting for scroll
+  useInstantAnimation();
   
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,11 +20,10 @@ const Contact = () => {
       description: "We'll get back to you as soon as possible.",
     });
   };
-
   return (
-    <div className="min-h-screen flex flex-col bg-[#0d1321]">
+    <div className="min-h-screen flex flex-col animate-bg-container">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow animate-bg-content">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl font-bold text-blue-400 mb-8 animate-on-scroll">Contact Us</h1>
           

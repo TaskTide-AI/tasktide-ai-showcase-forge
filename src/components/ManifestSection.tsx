@@ -3,10 +3,9 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, FileStack, BarChartBig, Workflow } from "lucide-react";
 
-const ManifestSection = () => {
-  return (
-    <section className="bg-dark-300 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-tasktide-blue/20 to-tasktide-teal/10 backdrop-blur-sm"></div>
+const ManifestSection = () => {  return (
+    <section className="animate-bg-panel relative overflow-hidden">
+      {/* Removed gradient background div as it's replaced by animated background */}
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-on-scroll">

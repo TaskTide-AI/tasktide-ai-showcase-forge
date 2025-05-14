@@ -4,6 +4,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Styles for animated background integration */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: transparent !important; /* Make sure body background is transparent to show canvas */
+}
+
+/* Force dark background for UI components */
+.bg-background, [class*="bg-white"], [class*="background-white"], [class*="background-color: white"],
+div[style*="background-color: white"], div[style*="background-color:#fff"], div[style*="background-color: #fff"],
+div[style*="background: white"], div[style*="background:#fff"], div[style*="background: #fff"],
+.white-bg, .bg-white, .white {
+  background-color: rgba(13, 18, 30, 0.8) !important;
+  background-image: none !important;
+}
+
+.bg-card, .bg-popover, .bg-accent, .bg-secondary, .bg-muted, [class*="bg-card"],
+div[style*="background-color: #f8f9fa"], div[style*="background-color:#f8f9fa"],
+div[style*="background: #f8f9fa"], div[style*="background:#f8f9fa"],
+div[style*="background-color: #f9fafb"], div[style*="background-color:#f9fafb"],
+div[style*="background: #f9fafb"], div[style*="background:#f9fafb"] {
+  background-color: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(3px);
+  background-image: none !important;
+}
+
+#root {
+  position: relative;
+  z-index: 1; /* App content above background canvas */
+  min-height: 100vh;
+}
+
+/* Adjust background containers to show animation */
+.bg-dark-500,
+.bg-dark-400:not(section#projects) {
+  background-color: rgba(10, 10, 30, 0.4) !important; /* Semi-transparent to show animation */
+  backdrop-filter: blur(3px); /* Add slight blur for better text readability */
+}
+
+/* Keep projects section background solid */
+section#projects.bg-dark-400 {
+  background-color: #111827 !important; /* Original dark-400 color */
+}
+
+.glass-card {
+  background-color: rgba(20, 20, 40, 0.6) !important; /* Adjust glass card to be semi-transparent */
+  backdrop-filter: blur(3px); /* Add blur effect for better readability */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+/* Regular styles */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -75,11 +132,21 @@
     --input: 217 33% 17%;
     --ring: 212.7 26.8% 83.9%;
   }
-
   body {
-    @apply bg-dark-500 text-foreground font-sans;
+    @apply bg-transparent text-foreground font-sans;
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease;
+    background-color: transparent !important;
+  }
+
+  /* Force dark background for UI components */
+  .bg-background {
+    background-color: rgba(13, 18, 30, 0.8) !important;
+  }
+  
+  .bg-card, .bg-popover, .bg-accent {
+    background-color: rgba(20, 20, 40, 0.6) !important;
+    backdrop-filter: blur(3px);
   }
 }
 
@@ -118,9 +185,7 @@
   
   .animate-card.animated {
     @apply opacity-100 animate-fade-in-up;
-  }
-
-  /* Force initial visibility on mobile devices */
+  }  /* Force initial visibility on mobile devices */
   @media (max-width: 768px) {
     .animate-on-scroll,
     .animate-text,
@@ -128,11 +193,27 @@
       @apply opacity-100;
     }
   }
-
+  
+  /* Force initial visibility on all pages except home */
+  body:not(.home-page) .animate-on-scroll,
+  body:not(.home-page) .animate-text,
+  body:not(.home-page) .animate-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  body:not(.home-page) .animate-on-scroll,
+  body:not(.home-page) .animate-text,
+  body:not(.home-page) .animate-card {
+    @apply opacity-100;
+  }
   /* New styles for 3D and glassmorphism effects */
   .glass-card {
-    @apply bg-dark-400/60 backdrop-blur-md border border-white/5 shadow-lg;
+    @apply bg-dark-400 backdrop-blur-md border border-white/5 shadow-lg;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dropdown-menu {
+    @apply bg-dark-400 text-white backdrop-blur-md shadow-lg border border-white/10;
   }
 
   .text-gradient {
@@ -151,10 +232,50 @@
   .button-3d:active {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
-  
-  .top-ribbon-button-hover {
+    .top-ribbon-button-hover {
     @apply relative overflow-hidden transition-all duration-300 
            before:absolute before:inset-0 before:bg-gradient-to-r before:from-tasktide-teal/20 before:to-tasktide-purple/20 
            before:opacity-0 before:transition-opacity hover:before:opacity-100;
   }
+}
+
+/* Additional dark theme overrides to prevent any white sections */
+/* Target any elements with inline styles that might have white backgrounds */
+[style*="background-color: white"],
+[style*="background-color:#fff"],
+[style*="background-color: #fff"],
+[style*="background: white"],
+[style*="background:#fff"],
+[style*="background: #fff"] {
+  background-color: rgba(13, 18, 30, 0.8) !important;
+  background-image: none !important;
+}
+
+/* Target light colored backgrounds that might appear as white sections */
+[style*="background-color: #f8f9fa"],
+[style*="background-color:#f8f9fa"],
+[style*="background: #f8f9fa"],
+[style*="background:#f8f9fa"],
+[style*="background-color: #f9fafb"],
+[style*="background-color:#f9fafb"],
+[style*="background: #f9fafb"],
+[style*="background:#f9fafb"] {
+  background-color: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(3px);
+  background-image: none !important;
+}
+
+/* Override any white backgrounds that might be added by third-party components */
+.dialog-content,
+.popover-content,
+.dropdown-content,
+.menu-content,
+.modal,
+.modal-content,
+.form-container,
+.card-container {
+  background-color: rgba(20, 20, 40, 0.6) !important;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: white !important;
 }

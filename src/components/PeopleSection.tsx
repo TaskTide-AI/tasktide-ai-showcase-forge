@@ -80,7 +80,7 @@ const TeamMemberCard = ({ member, index }: { member: typeof teamMembers[0]; inde
 
 const PeopleSection = () => {
   return (
-    <section id="people" className="bg-dark-300">
+    <section id="people" className="animate-bg-panel">
       <div className="section-container animate-on-scroll">
         <h2 className="section-title text-center animate-text">Our Team</h2>
         <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12 animate-text" style={{ animationDelay: '0.2s' }}>

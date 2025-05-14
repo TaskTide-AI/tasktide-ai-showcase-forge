@@ -4,6 +4,7 @@ import { Search as SearchIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import useInstantAnimation from '../hooks/use-instant-animation';
 
 // Mock data for search results
 const mockProjects = [
@@ -78,6 +79,9 @@ const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState({ projects: [], content: [] });
   const [isSearching, setIsSearching] = useState(false);
+  
+  // Apply animations immediately without waiting for scroll
+  useInstantAnimation();
 
   // Parse the query parameter
   useEffect(() => {
@@ -130,10 +134,9 @@ const Search = () => {
       performSearch(searchQuery);
     }
   };
-
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-dark-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <div className="pt-24 pb-16 min-h-screen animate-bg-container">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 animate-bg-content">
         <h1 className="text-3xl font-bold text-white mb-8">Search Results</h1>
         
         {/* Search form */}

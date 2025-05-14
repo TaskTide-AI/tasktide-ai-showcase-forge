@@ -3,12 +3,14 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
+import useInstantAnimation from '../hooks/use-instant-animation';
 
 const Projects = () => {
-  return (
-    <div className="min-h-screen flex flex-col bg-[#0d1321]">
+  // Apply animations immediately without waiting for scroll
+  useInstantAnimation();  return (
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'transparent' }}>
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow" style={{ position: 'relative', zIndex: 1 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl font-bold text-white mb-8 animate-on-scroll">Our Projects</h1>
           

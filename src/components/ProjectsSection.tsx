@@ -77,10 +77,8 @@ const ProjectsSection = () => {
     return category === "all" 
       ? projects 
       : projects.filter(project => project.category === category);
-  };
-
-  return (
-    <section id="projects" className="bg-dark-400 py-16">
+  };  return (
+    <section id="projects" className="py-16 animate-bg-panel">
       <div className="section-container animate-on-scroll">
         <h2 className="section-title text-center animate-text text-tasktide-teal">Our Projects</h2>
         <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12 animate-text" style={{ animationDelay: '0.2s' }}>
